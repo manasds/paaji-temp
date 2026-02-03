@@ -1,11 +1,16 @@
 import Link from "next/link";
 import React from "react";
 import { cn } from "@/lib/utils";
-export const Logo = ({className} : {className? :string}) => {
-  return <Link href="/" className={cn("flex items-center gap-1")} >Agenforce</Link>
-};  
+export const Logo = ({ className }: { className?: string }) => {
+  return (
+    <Link href="/" className={cn("flex items-center gap-1")}>
+      <LogoIcon />
+      <span className="text-sm text-neutral-600 tracking-wide">Agenforce</span>
+    </Link>
+  );
+};
 
-export const LogoIcon = (props : React.SVGAttributes<SVGSVGElement>) => {
+export const LogoIcon = (props: React.SVGAttributes<SVGSVGElement>) => {
   return (
     <svg
       width="20"
