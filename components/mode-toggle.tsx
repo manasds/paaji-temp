@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { SunIcon, MoonIcon } from "lucide-react";
 
 const ModeToggle = () => {
-  const {setTheme, resolvedTheme } = useTheme();
+  const { setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -15,7 +15,7 @@ const ModeToggle = () => {
     setTheme(resolvedTheme === "light" ? "dark" : "light");
   };
 
-  if (!mounted) return <div className="size-8" />; 
+  if (!mounted) return <div className="size-8" />;
 
   return (
     <button
