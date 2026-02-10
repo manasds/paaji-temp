@@ -4,8 +4,8 @@ import { cn } from "@/lib/utils";
 export const Logo = ({ className }: { className?: string }) => {
   return (
     <Link href="/" className={cn("flex items-center gap-1")}>
-      <LogoIcon />
-      <span className="text-sm text-neutral-600 tracking-wide">Agenforce</span>
+      <LogoIcon  className={className}/>
+      <span className="text-sm text-neutral-600 tracking-wide dark:text-neutral-500 font-medium">Agenforce</span>
     </Link>
   );
 };

@@ -30,7 +30,7 @@ export const LogoCloud = () => {
     },
   ];
   return (
-    <section>
+    <section className="pb-10 md:pb-10">
       <h2 className="text-neutral-600 dark:text-neutral-400 font-medium text-lg text-center max-w-xl mx-auto">
         Trusted by Modern Operators Across Industries. <br />
         <span className="text-neutral-400 ">From pilot to scale without chaos.</span>
@@ -62,7 +62,7 @@ export const LogoCloud = () => {
           alt={logo.title}
           height={100}
           width={100}
-          className="size-20 object-contain mx-auto"
+          className="size-20 object-contain mx-auto dark:filter dark:invert"
           />
           </motion.div>
         ))}

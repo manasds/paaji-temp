@@ -6,6 +6,7 @@ import { Logo } from "./logo";
 import { Button } from "./ui/button";
 import { PanelLeft, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
+import ModeToggle from "./mode-toggle";
 const navlinks = [
   { title: "Features", href: "/features" },
   { title: "Products", href: "/products" },
@@ -25,15 +26,18 @@ export const Navbar = () => {
 export const MobileNavbar = () => {
   const [open, setopen] = useState(false);
   return (
-    <div className="flex md:hidden px-4 py-2 justify-between relative">
+    <div className="flex md:hidden py-2 px-4 justify-between relative items-center">
       <Logo />
-      <button onClick={() => setopen(!open)}>
-        <PanelLeft className="size-4" />
-      </button>
+      <div className="flex gap-2">
+        <ModeToggle />
+        <button onClick={() => setopen(!open)}>
+          <PanelLeft className="size-5" />
+        </button>
+      </div>
       <AnimatePresence>
         {open && (
           <motion.div
-            className="fixed inset-0 z-50 h-screen w-screen bg-white px-4 py-2 flex flex-col justify-between"
+            className="fixed inset-0 z-60 h-dvh w-screen bg-white flex flex-col justify-between"
             initial={{ opacity: 0 }}
             animate={{
               opacity: 1,
@@ -48,40 +52,44 @@ export const MobileNavbar = () => {
             }}
           >
             <div>
-            <div className="flex w-full items-center justify-between">
-              <Logo />
-              <button onClick={() => setopen(false)}>
-                <X className="size-4" />
-              </button>
+              <div className="flex w-full py-2 items-center justify-between px-4">
+                <Logo className="text-black" />
+                <button onClick={() => setopen(false)}>
+                  <X className="h-8 dark:text-black " />
+                </button>
+              </div>
+              <div className="flex flex-col gap-6 my-10">
+                {navlinks.map((link, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{
+                      opacity: 0,
+                    }}
+                    animate={{
+                      opacity: 1,
+                    }}
+                    transition={{
+                      duration: 0.2,
+                      delay: idx * 0.1,
+                    }}
+                  >
+                    <Link
+                      className="text-sm text-neutral-600 dark:text-neutral-400 font-medium tracking-wide"
+                      href={link.href}
+                    >
+                      {link.title}
+                    </Link>
+                  </motion.div>
+                ))}
+              </div>
             </div>
-            <div className="flex flex-col gap-6 my-10">
-              {navlinks.map((link, idx) => (
-                <motion.div
-                initial={{
-                  opacity : 0 
-                }}
-                animate={{
-                  opacity : 1 
-                }}
-                transition={{
-                  duration : 0.2 ,
-                  delay : idx * 0.1 , 
-                }}
-                >
-
-                <Link
-                  key={idx}   
-                  className="text-sm text-neutral-600 dark:text-neutral-400 font-medium tracking-wide"
-                  href={link.href}
-                >
-                  {link.title}
-                </Link>
-                </motion.div>
-              ))}
-            </div>
-            </div>
-            <div className="flex justify-end gap-6">
-              <Button variant="outline" className="border border-neutral-300">Login</Button>
+            <div className="flex justify-end gap-6 px-4 pb-4">
+              <Button
+                variant="outline"
+                className="border border-neutral-300 dark:text-black dark:border-neutral-700"
+              >
+                Login
+              </Button>
               <Button>Signup</Button>
             </div>
           </motion.div>
@@ -113,6 +121,7 @@ export const DesktopNavbar = () => {
           Login
         </Link>
         <Button>Signup</Button>
+        <ModeToggle />
       </div>
     </Container>
   );
