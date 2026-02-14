@@ -37,7 +37,7 @@ export const MobileNavbar = () => {
       <AnimatePresence>
         {open && (
           <motion.div
-            className="fixed inset-0 z-60 h-dvh w-screen bg-white flex flex-col justify-between"
+            className="fixed inset-0 z-60 h-dvh w-screen bg-white/40 dark:bg-black/40 flex flex-col justify-between overscroll-contain overflow-y-auto"
             initial={{ opacity: 0 }}
             animate={{
               opacity: 1,
@@ -53,12 +53,13 @@ export const MobileNavbar = () => {
           >
             <div>
               <div className="flex w-full py-2 items-center justify-between px-4">
-                <Logo className="text-black" />
+              {/* this classname is applied to logo svg and not whole logo with title  */}
+                <Logo className="text-black dark:text-white" />
                 <button onClick={() => setopen(false)}>
-                  <X className="h-8 dark:text-black " />
+                  <X className="h-8 dark:text-white " />
                 </button>
               </div>
-              <div className="flex flex-col gap-6 my-10">
+              <div className="flex flex-col gap-6 my-10 px-4">
                 {navlinks.map((link, idx) => (
                   <motion.div
                     key={idx}
@@ -86,7 +87,7 @@ export const MobileNavbar = () => {
             <div className="flex justify-end gap-6 px-4 pb-4">
               <Button
                 variant="outline"
-                className="border border-neutral-300 dark:text-black dark:border-neutral-700"
+                className="border border-neutral-300 dark:text-neutral-200  dark:border-neutral-700"
               >
                 Login
               </Button>

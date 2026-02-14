@@ -1,15 +1,21 @@
 import { Features } from "@/components/features";
+import { FeaturesSecondary } from "@/components/features-secondary";
 import { Hero } from "@/components/hero";
 import { LogoCloud } from "@/components/logo-cloud";
 import ModeToggle from "@/components/mode-toggle";
+import { Outcomes } from "@/components/outcomes";
+import { Speed } from "@/components/speed";
 import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="min-h-screen font-display">
+    <div className="font-display min-h-screen">
       <Hero />
       <LogoCloud />
-      <Features />  
+      <Features />
+      <Speed />
+      <FeaturesSecondary />
+      <Outcomes />
     </div>
   );
 }

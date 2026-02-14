@@ -3,10 +3,14 @@ import React from "react";
 import Image from "next/image";
 import { easeOut, motion } from "motion/react";
 import { cn } from "@/lib/utils";
-export const LandingImages = () => {
+export const LandingImages = ({
+  firstImageSrc = "https://assets.aceternity.com/screenshots/4.jpg" ,
+  secondImageSrc = "https://assets.aceternity.com/screenshots/3.jpg" ,
+  className = "" ,
+}) => {
   return (
     <div className="relative">
-    <div className="relative min-h-72 sm:min-h-80 md:min-h-100 lg:min-h-140 w-full pt-20 md:pt-0 perspective-distant translate-x-10 md:translate-x-28">
+    <div className={cn("relative min-h-72 sm:min-h-80 md:min-h-100 lg:min-h-140 w-full pt-20 md:pt-0 lg:pt-20 perspective-distant translate-x-10 md:translate-x-28", className)}>
       <motion.div 
       initial={{
         opacity : 0 ,
@@ -22,7 +26,7 @@ export const LandingImages = () => {
       }}
       className="perspective-[4000px] pt-28 md:pt-0 ">
         <Image
-          src="https://assets.aceternity.com/screenshots/4.jpg"
+          src={firstImageSrc}
           alt="Demo for agenforce template "
           height={1080}
           width={1920}
@@ -50,7 +54,7 @@ export const LandingImages = () => {
       }}
       className="perspective-[4000px] translate-x-10 -translate-y-40">
         <Image
-          src="https://assets.aceternity.com/screenshots/3.jpg"
+          src={secondImageSrc}
           alt="Demo for agenforce template "
           height={1080}
           width={1920}
